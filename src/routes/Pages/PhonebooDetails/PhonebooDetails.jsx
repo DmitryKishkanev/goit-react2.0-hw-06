@@ -1,0 +1,34 @@
+import { Suspense, useRef } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import BackLink from '@/routes/Component/BackLink';
+import Phonebook from '@/components/Phonebook';
+import style from './PhonebooDetails.module.css';
+
+const PhonebooDetails = () => {
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/');
+
+  return (
+    <main className={style.main}>
+      {/* строчка для ESLint, что бы он не ругался на backLinkRef.current*/}
+      {/* eslint-disable-next-line */}
+      <BackLink to={backLinkRef.current}>Go back</BackLink>
+      <div className={style.phonebooDetailsContainer}>
+        <Phonebook />
+
+        <div className={style.descriptionBox}>
+          <div className={style.linkBox}>
+            <Link className={style.link} to="description">
+              Description
+            </Link>
+          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default PhonebooDetails;

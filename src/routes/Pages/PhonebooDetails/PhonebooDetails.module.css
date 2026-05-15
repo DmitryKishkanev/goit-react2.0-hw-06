@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.phonebooDetailsContainer {
+  display: flex;
+  /* justify-content: center; */
+  gap: 30px;
+  width: 100%;
+}
+
+.descriptionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.linkBox {
+  transition: var(--transition-time) var(--transition-type);
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.01);
+  }
+}
+
+.link {
+  color: rgb(33, 150, 243);
+}

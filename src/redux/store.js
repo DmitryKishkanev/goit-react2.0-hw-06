@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import { createAction, createReducer } from '@reduxjs/toolkit';
-import { contactsSlice } from './contactsSlice';
+import contactsSlice from './contact/contactsSlice';
+import authSlice from './auth/authSlice';
 
 // const increment = createAction('myCounter/increment');
 // const decrement = createAction('myCounter/decrement');
@@ -18,5 +19,6 @@ import { contactsSlice } from './contactsSlice';
 export const store = configureStore({
   reducer: {
     contacts: contactsSlice,
+    auth: authSlice,
   },
 });
