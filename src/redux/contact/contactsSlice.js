@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { contactsInitialState } from '@/redux/initialState';
+import { initialState } from '@/redux/initialState';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitialState.contacts,
+  initialState: initialState.contacts,
   reducers: {},
 });
 

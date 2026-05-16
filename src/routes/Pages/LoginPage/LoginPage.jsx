@@ -1,13 +1,9 @@
-import React from 'react';
+import LoginForm from '@/routes/Component/LoginForm';
 
 const LoginPage = () => {
   return (
     <div>
-      <form action="">
-        <input type="text" name="login" />
-
-        <button type="submit">Log in</button>
-      </form>
+      <LoginForm />
     </div>
   );
 };

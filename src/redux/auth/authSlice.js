@@ -1,12 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { contactsInitialState } from '@/redux/initialState';
+import { initialState } from '@/redux/initialState';
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
-  initialState: {},
-  reducers: {},
+  initialState: initialState.auth,
+
+  reducers: {
+    logIn(state, action) {
+      state.login = action.payload;
+      state.isLoggedIn = true;
+    },
+    logOut(state) {
+      state.login = '';
+      state.isLoggedIn = false;
+    },
+  },
 });
 
-// export const { increment, decrement, incrementByAmount } =
-//   contactsSlice.actions;
-export default authSlice.reducer;
+export const { logIn, logOut } = authSlice.actions;
