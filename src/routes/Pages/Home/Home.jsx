@@ -1,6 +1,9 @@
+import { useLogOutRedirect } from '@/hooks/useLogOuteRedirect';
 import style from './Home.module.css';
 
 const Home = () => {
+  useLogOutRedirect();
+
   return (
     <main className={style.main}>
       <h1>This phone book knows everything about your contacts</h1>

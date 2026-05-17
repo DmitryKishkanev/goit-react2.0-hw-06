@@ -1,15 +1,18 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logIn } from '@/redux/auth/authSlice';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    console.log(form.elements.login.value);
+
     dispatch(logIn(form.elements.login.value));
     e.currentTarget.reset();
+    navigate('/', { replace: true });
   };
 
   return (
