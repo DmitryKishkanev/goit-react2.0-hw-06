@@ -1,32 +1,31 @@
 import { useId } from 'react';
-import { Formik, Field } from 'formik';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeFilter } from '@/redux/filter/filterSlice';
 import style from './SearchBox.module.css';
 
-const SearchBox = ({ value, onFilter }) => {
+const SearchBox = () => {
+  const value = useSelector(state => state.filters.name);
+  const dispatch = useDispatch();
   const fieldNameId = useId();
 
-  return (
-    <Formik>
-      <div className={style.searchBox}>
-        <label htmlFor={fieldNameId} className={style.label}>
-          Find contacts by name
-        </label>
-        <Field
-          className={style.field}
-          type="text"
-          value={value}
-          id={fieldNameId}
-          onChange={e => onFilter(e.target.value)}
-        />
-      </div>
-    </Formik>
-  );
-};
+  const handleChange = e => {
+    dispatch(changeFilter(e.target.value));
+  };
 
-SearchBox.propTypes = {
-  value: PropTypes.string.isRequired,
-  onFilter: PropTypes.func.isRequired,
+  return (
+    <div className={style.searchBox}>
+      <label htmlFor={fieldNameId} className={style.label}>
+        Find contacts by name
+      </label>
+      <input
+        className={style.field}
+        type="text"
+        value={value}
+        id={fieldNameId}
+        onChange={handleChange}
+      />
+    </div>
+  );
 };
 
 export default SearchBox;

@@ -2,7 +2,8 @@ import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import { object, string } from 'yup';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from '@/redux/contact/contactsSlice';
 import style from './ContactForm.module.css';
 
 const FeedbackSchema = object().shape({
@@ -18,7 +19,8 @@ const initialValues = {
   number: '',
 };
 
-const ContactForm = ({ onAdd }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
 
@@ -29,7 +31,7 @@ const ContactForm = ({ onAdd }) => {
       number: values.number,
     };
 
-    onAdd(contact);
+    dispatch(addContact(contact));
     resetForm();
   };
 
@@ -80,10 +82,6 @@ const ContactForm = ({ onAdd }) => {
       </Form>
     </Formik>
   );
-};
-
-ContactForm.propTypes = {
-  onAdd: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
