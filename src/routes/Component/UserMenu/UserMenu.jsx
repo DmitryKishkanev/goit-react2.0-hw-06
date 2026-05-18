@@ -1,10 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useGetState } from '@/redux/useGetState';
 import { logOut } from '@/redux/auth/authSlice';
 import style from './UserMenu.module.css';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const login = useSelector(state => state.auth.login);
+  const { login } = useGetState();
 
   return (
     <div className={style.userMenuBox}>

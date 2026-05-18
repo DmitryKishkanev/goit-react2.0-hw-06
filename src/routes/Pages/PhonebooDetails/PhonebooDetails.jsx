@@ -2,11 +2,14 @@ import { Suspense, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import BackLink from '@/routes/Component/BackLink';
 import Phonebook from '@/components/Phonebook';
+import { useLogOutRedirect } from '@/hooks/useLogOuteRedirect';
 import style from './PhonebooDetails.module.css';
 
 const PhonebooDetails = () => {
   const location = useLocation();
   const backLinkRef = useRef(location.state?.from ?? '/');
+
+  useLogOutRedirect();
 
   return (
     <main className={style.main}>
