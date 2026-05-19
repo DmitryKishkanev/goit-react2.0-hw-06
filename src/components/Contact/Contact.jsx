@@ -1,13 +1,14 @@
 import { BiSolidUser } from 'react-icons/bi';
 import { BiSolidPhone } from 'react-icons/bi';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useGetState } from '@/redux/useGetState';
 import { deleteContact } from '@/redux/contact/contactsSlice';
 
 import style from './Contact.module.css';
 
 const Contact = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.filters.name);
+  const { contacts } = useGetState();
+  const { filter } = useGetState();
   const dispatch = useDispatch();
 
   const visibleContacts = contacts.filter(contact =>

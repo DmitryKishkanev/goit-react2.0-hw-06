@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useGetState } from '@/redux/useGetState';
 import Navigation from '../Navigation';
 import UserMenu from '../UserMenu';
 import AuthNav from '../AuthNav';
 import style from './AppBar.module.css';
 
 const AppBar = () => {
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const { isLoggedIn } = useGetState();
 
   return (
     <header className={style.header}>
