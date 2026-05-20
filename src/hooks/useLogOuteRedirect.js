@@ -8,7 +8,7 @@ export const useLogOutRedirect = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/login', { replace: true });
+      navigate('/', { replace: true });
     }
   }, [isLoggedIn, navigate]);
 };

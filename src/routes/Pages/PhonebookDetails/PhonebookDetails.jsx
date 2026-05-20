@@ -1,15 +1,22 @@
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import BackLink from '@/routes/Component/BackLink';
 import Phonebook from '@/components/Phonebook';
 import { useLogOutRedirect } from '@/hooks/useLogOuteRedirect';
-import style from './PhonebooDetails.module.css';
+import style from './PhonebookDetails.module.css';
 
-const PhonebooDetails = () => {
+const PhonebookDetails = () => {
   const location = useLocation();
   const backLinkRef = useRef(location.state?.from ?? '/');
 
   useLogOutRedirect();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [location]);
 
   return (
     <main className={style.main}>
@@ -34,4 +41,4 @@ const PhonebooDetails = () => {
   );
 };
 
-export default PhonebooDetails;
+export default PhonebookDetails;

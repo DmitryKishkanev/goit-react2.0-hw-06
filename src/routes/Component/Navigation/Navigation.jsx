@@ -7,21 +7,21 @@ const Navigation = () => {
 
   return (
     <>
-      {isLoggedIn && (
-        <ul className={style.headerList}>
-          <li className={style.headerItem}>
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? `${style.headerLink} ${style.active}`
-                  : style.headerLink
-              }
-              to="/"
-            >
-              Home
-            </NavLink>
-          </li>
+      <ul className={style.headerList}>
+        <li className={style.headerItem}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? `${style.headerLink} ${style.active}`
+                : style.headerLink
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+        </li>
 
+        {isLoggedIn && (
           <li className={style.headerItem}>
             <NavLink
               className={({ isActive }) =>
@@ -34,8 +34,8 @@ const Navigation = () => {
               Phonebook
             </NavLink>
           </li>
-        </ul>
-      )}
+        )}
+      </ul>
     </>
   );
 };
